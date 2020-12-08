@@ -31,8 +31,8 @@ pipeline {
             steps {
                 echo 'Deploying....'
                 withCredentials([sshUserPrivateKey(credentialsId: 'DurmonMinecraft', keyFileVariable: 'identity', passphraseVariable: '', usernameVariable: 'userName')]) {
-                    remote.user = userName
-                    remote.identityFile = identity
+                    // remote.user = userName
+                    // remote.identityFile = identity
                     //writeFile file: 'abc.sh', text: 'ls'
                     sshCommand remote: remote, command: 'pwd'
                     sshCommand remote: remote, command: 'ls -la'
