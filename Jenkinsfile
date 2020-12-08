@@ -12,8 +12,8 @@ pipeline {
             }
             steps {
                 echo 'Building'               
-                sh 'YARN_CACHE_FOLDER=./cache;yarn install'
-                sh 'YARN_CACHE_FOLDER=./cache;yarn build'
+                sh 'YARN_CACHE_FOLDER=./cache yarn install'
+                sh 'YARN_CACHE_FOLDER=./cache yarn build'
                 stash includes: 'build/*', name: 'build'
                 deleteDir()
             }
@@ -21,6 +21,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
+                deleteDir()
                 unstash 'build'
                 sh "ls -la"
             }
