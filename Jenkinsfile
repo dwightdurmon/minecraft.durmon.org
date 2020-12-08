@@ -5,10 +5,6 @@ pipeline {
         buildDiscarder(logRotator(numToKeepStr: '5'))
     }
 
-    environment { 
-      SSH_HOST = credentials("SSH_HOST") 
-    }
-
     stages {
         stage('Build') {
             agent {
@@ -36,7 +32,7 @@ pipeline {
                 echo 'Deploying....'
 
                 withCredentials([sshUserPrivateKey(credentialsId: 'DurmonMinecraft', keyFileVariable: 'identity', passphraseVariable: '', usernameVariable: 'SSH_USERNAME')]) {
-                    sh 'ssh ${SSH_USERNAME}@${SSH_HOST} ls -la'
+                    sh 'ssh ${SSH_USERNAME}@$durmon.org ls -la'
                 }
             }
         }
