@@ -18,12 +18,12 @@ pipeline {
                 deleteDir()
             }
         }
-        stage('Test') {
+        stage('Show Output') {
             steps {
                 echo 'Testing..'
                 deleteDir()
                 unstash 'build'
-                sh "ls -la"
+                sh "ls -la build"
             }
         }
         stage('Deploy') {
