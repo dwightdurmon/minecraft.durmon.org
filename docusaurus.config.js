@@ -10,7 +10,7 @@ module.exports = {
   projectName: 'docusaurus', // Usually your repo name.
   themeConfig: {
     navbar: {
-      title: 'MyDurmonMC',
+      title: 'DurmonMC',
       logo: {
         alt: 'Site Logo',
         src: 'img/logo.svg',
@@ -22,7 +22,7 @@ module.exports = {
           label: 'Docs',
           position: 'left',
         },
-        {to: 'blog', label: 'Blog', position: 'left'},
+        {to: 'news', label: 'News', position: 'left'},
         {
           href: 'https://github.com/dwightdurmon/minecraft.durmon.org',
           label: 'GitHub',
@@ -50,10 +50,6 @@ module.exports = {
           title: 'Community',
           items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-            },
-            {
               label: 'Discord',
               href: 'https://discordapp.com/invite/docusaurus',
             },
@@ -67,12 +63,12 @@ module.exports = {
           title: 'More',
           items: [
             {
-              label: 'Blog',
-              to: 'blog',
+              label: 'News',
+              to: 'news',
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              href: 'https://github.com/dwightdurmon/minecraft.durmon.org',
             },
           ],
         },
