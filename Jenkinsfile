@@ -12,8 +12,8 @@ pipeline {
             }
             steps {
                 echo 'Building'              
-                sh 'yarn install --cache-folder ./cache --global-folder ./global'
-                sh 'yarn build --global-folder ./global'
+                sh 'yarn --cache-folder ./cache --global-folder ./global install'
+                sh 'yarn --cache-folder ./cache --global-folder ./global build'
                 stash includes: 'build/*', name: 'build'
             }
         }
