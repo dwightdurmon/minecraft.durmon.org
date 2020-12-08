@@ -1,5 +1,5 @@
 pipeline {
-    agent none
+    agent any
 
     options {
         buildDiscarder(logRotator(numToKeepStr: '5'))
@@ -7,15 +7,15 @@ pipeline {
 
     stages {
         stage('Build') {
+            agent {
+                docker { image 'node:15-alpine' }
+            }
             steps {
-                echo 'Building'
-                node {
-                    docker.image('node:15-alpine').inside {
-                        sh 'yarn install'
-                        sh 'yarn build'
-                        stash includes: 'build/*', name: 'build'
-                    }
-                }
+                echo 'Building'               
+                sh 'yarn install'
+                sh 'yarn build'
+                stash includes: 'build/*', name: 'build'
+                
             }
         }
         stage('Test') {
