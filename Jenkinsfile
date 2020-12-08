@@ -11,7 +11,9 @@ pipeline {
                 docker { image 'node:15-alpine' }
             }
             steps {
-                echo 'Building'              
+                echo 'Building'
+                sh 'mkdir cache'
+                sh 'mkdir global'            
                 sh 'yarn --cache-folder ./cache --global-folder ./global install'
                 sh 'yarn --cache-folder ./cache --global-folder ./global build'
                 stash includes: 'build/*', name: 'build'
