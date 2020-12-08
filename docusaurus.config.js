@@ -22,7 +22,7 @@ module.exports = {
           label: 'Docs',
           position: 'left',
         },
-        {to: 'news', label: 'News', position: 'left'},
+        {to: 'news/', label: 'News', position: 'left'},
         {
           href: 'https://github.com/dwightdurmon/minecraft.durmon.org',
           label: 'GitHub',
@@ -64,7 +64,7 @@ module.exports = {
           items: [
             {
               label: 'News',
-              to: 'news',
+              to: 'news/',
             },
             {
               label: 'GitHub',
@@ -86,7 +86,7 @@ module.exports = {
           editUrl:
             'https://github.com/dwightdurmon/minecraft.durmon.org',
         },
-        blog: {
+        news: {
           showReadingTime: true,
           // Please change this to your repo.
           editUrl:
