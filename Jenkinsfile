@@ -5,6 +5,10 @@ pipeline {
         buildDiscarder(logRotator(numToKeepStr: '5'))
     }
 
+    environment { 
+      SSH_HOST = credentials("SSH_HOST") 
+    }
+
     stages {
         stage('Build') {
             agent {
@@ -30,18 +34,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
-                withCredentials([sshUserPrivateKey(credentialsId: 'DurmonMinecraft', keyFileVariable: 'identity', passphraseVariable: '', usernameVariable: 'userName')]) {
-                    // remote.user = userName
-                    // remote.identityFile = identity
-                    //writeFile file: 'abc.sh', text: 'ls'
-                    sshCommand remote: remote, command: 'pwd'
-                    sshCommand remote: remote, command: 'ls -la'
-                    //sshCommand remote: remote, command: 'for i in {1..5}; do echo -n \"Loop \$i \"; date ; sleep 1; done'
-                    // sshPut remote: remote, from: 'abc.sh', into: '.'
-                    // sshGet remote: remote, from: 'abc.sh', into: 'bac.sh', override: true
-                    // sshScript remote: remote, script: 'abc.sh'
-                    // sshRemove remote: remote, path: 'abc.sh'
-                
+
+                withCredentials([sshUserPrivateKey(credentialsId: 'DurmonMinecraft', keyFileVariable: 'identity', passphraseVariable: '', usernameVariable: 'SSH_USERNAME')]) {
+                    sh 'ssh ${SSH_USERNAME}@${SSH_HOST} ls -la'
                 }
             }
         }
