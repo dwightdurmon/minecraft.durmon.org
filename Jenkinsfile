@@ -32,7 +32,7 @@ pipeline {
                 echo 'Deploying....'
 
                 withCredentials([sshUserPrivateKey(credentialsId: 'DurmonMinecraft', keyFileVariable: 'identity', passphraseVariable: '', usernameVariable: 'SSH_USERNAME')]) {
-                    sh 'ssh -o StrictHostKeyChecking=no ${SSH_USERNAME}@durmon.org "ls -la; pwd"'
+                    sh 'ssh -i identity -o StrictHostKeyChecking=no ${SSH_USERNAME}@durmon.org "ls -la; pwd"'
                 }
             }
         }
