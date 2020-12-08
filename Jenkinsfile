@@ -4,15 +4,10 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                echo 'Check out code'
-                checkout scm
-            }
-        }
         stage('Build') {
             steps {
                 echo 'Building'
+                sh 'yarn install'
                 sh 'yarn build'
 
             }
