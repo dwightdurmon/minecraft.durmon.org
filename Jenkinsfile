@@ -16,7 +16,7 @@ pipeline {
                 sh 'mkdir global'            
                 sh 'yarn --cache-folder ./cache --global-folder ./global install'
                 sh 'yarn --cache-folder ./cache --global-folder ./global build'
-                stash includes: 'build', name: 'build'
+                stash includes: 'build/**', name: 'build'
             }
         }
         stage('Deploy') {
