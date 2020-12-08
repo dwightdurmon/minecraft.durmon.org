@@ -32,7 +32,7 @@ pipeline {
                 echo 'Deploying....'
 
                 withCredentials([sshUserPrivateKey(credentialsId: 'DurmonMinecraft', keyFileVariable: 'identity', passphraseVariable: '', usernameVariable: 'SSH_USERNAME')]) {
-                    sh 'ssh ${SSH_USERNAME}@$durmon.org ls -la'
+                    sh 'ssh ${SSH_USERNAME}@durmon.org ls -la'
                 }
             }
         }
