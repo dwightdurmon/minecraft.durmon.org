@@ -25,7 +25,9 @@ pipeline {
                 unstash 'build'
                 sh 'ls -la'
                 withCredentials([sshUserPrivateKey(credentialsId: 'DurmonMinecraft', keyFileVariable: 'keyfile', passphraseVariable: '', usernameVariable: 'SSH_USERNAME')]) {
-                    sh 'ssh -i ${keyfile} -o StrictHostKeyChecking=no ${SSH_USERNAME}@durmon.org "cd ../../web; rm -rf *"'
+                    catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                        sh 'ssh -i ${keyfile} -o StrictHostKeyChecking=no ${SSH_USERNAME}@durmon.org "cd ../../web; rm -rf *"'
+                    }
                     sh 'scp -r -p -i ${keyfile} -o StrictHostKeyChecking=no build/* ${SSH_USERNAME}@durmon.org:../../web'
                 }
             }
