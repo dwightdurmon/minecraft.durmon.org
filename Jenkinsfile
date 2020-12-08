@@ -12,10 +12,10 @@ pipeline {
             }
             steps {
                 echo 'Building'               
-                sh 'yarn install'
-                sh 'yarn build'
+                sh 'YARN_CACHE_FOLDER=./cache;yarn install'
+                sh 'YARN_CACHE_FOLDER=./cache;yarn build'
                 stash includes: 'build/*', name: 'build'
-                
+                deleteDir()
             }
         }
         stage('Test') {
