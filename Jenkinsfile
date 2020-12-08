@@ -31,8 +31,8 @@ pipeline {
             steps {
                 echo 'Deploying....'
 
-                withCredentials([sshUserPrivateKey(credentialsId: 'DurmonMinecraft', keyFileVariable: 'identity', passphraseVariable: '', usernameVariable: 'SSH_USERNAME')]) {
-                    sh 'ssh -i identity -o StrictHostKeyChecking=no ${SSH_USERNAME}@durmon.org "ls -la; pwd"'
+                withCredentials([sshUserPrivateKey(credentialsId: 'DurmonMinecraft', keyFileVariable: 'keyfile', passphraseVariable: '', usernameVariable: 'SSH_USERNAME')]) {
+                    sh 'ssh -i ${keyfile} -o StrictHostKeyChecking=no ${SSH_USERNAME}@durmon.org "ls -la; pwd"'
                 }
             }
         }
