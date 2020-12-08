@@ -11,10 +11,9 @@ pipeline {
                 docker { image 'node:15-alpine' }
             }
             steps {
-                echo 'Building'
-                sh 'yarn config set prefix ${PWD}'               
-                sh 'yarn install'
-                sh 'yarn build'
+                echo 'Building'              
+                sh 'yarn install --cache-folder ./cache --global-folder ./global'
+                sh 'yarn build --global-folder ./global'
                 stash includes: 'build/*', name: 'build'
             }
         }
