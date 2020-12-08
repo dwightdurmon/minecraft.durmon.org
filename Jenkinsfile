@@ -1,14 +1,20 @@
 pipeline {
     agent none
 
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '5'))
+    }
+
     stages {
         stage('Build') {
             steps {
                 echo 'Building'
-                docker.image('buildpack-deps:jessie-scm').inside {
-                    sh 'yarn install'
-                    sh 'yarn build'
-                    stash includes: 'build/*', name: 'build'
+                node {
+                    docker.image('node:15-alpine').inside {
+                        sh 'yarn install'
+                        sh 'yarn build'
+                        stash includes: 'build/*', name: 'build'
+                    }
                 }
             }
         }
