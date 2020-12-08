@@ -1,7 +1,7 @@
 module.exports = {
-  title: 'My Site',
-  tagline: 'The tagline of my site',
-  url: 'https://your-docusaurus-test-site.com',
+  title: 'Durmon Minecraft',
+  tagline: 'A minecraft network',
+  url: 'https://www.durmon.org',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -10,9 +10,9 @@ module.exports = {
   projectName: 'docusaurus', // Usually your repo name.
   themeConfig: {
     navbar: {
-      title: 'My Site',
+      title: 'MyDurmonMC',
       logo: {
-        alt: 'My Site Logo',
+        alt: 'Site Logo',
         src: 'img/logo.svg',
       },
       items: [
@@ -24,7 +24,7 @@ module.exports = {
         },
         {to: 'blog', label: 'Blog', position: 'left'},
         {
-          href: 'https://github.com/facebook/docusaurus',
+          href: 'https://github.com/dwightdurmon/minecraft.durmon.org',
           label: 'GitHub',
           position: 'right',
         },
@@ -88,13 +88,13 @@ module.exports = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           editUrl:
-            'https://github.com/facebook/docusaurus/edit/master/website/',
+            'https://github.com/dwightdurmon/minecraft.durmon.org',
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           editUrl:
-            'https://github.com/facebook/docusaurus/edit/master/website/blog/',
+            'https://github.com/dwightdurmon/minecraft.durmon.org',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
